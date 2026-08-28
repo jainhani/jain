@@ -106,7 +106,7 @@
       display: inline-block;
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--primary-color, var(--primary));
+      color: var(--primary);
       letter-spacing: 1.5px;
       margin-bottom: 12px;
       background: var(--primary-light);
@@ -369,22 +369,24 @@
     }
 
     /* ==========================================================================
-       3. Doctor Profile (의료진 2인 소개)
+       3. Doctor Profile (의료진 2인 소개) - 레이아웃 & 간격 최적화
        ========================================================================== */
     .doctors-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
+      align-items: stretch;
     }
 
     .doctor-card {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 38px 30px;
+      padding: 36px 30px;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
+      gap: 20px;
       transition: var(--transition);
     }
 
@@ -396,7 +398,7 @@
 
     .doctor-image-box {
       width: 100%;
-      height: 320px;
+      height: 300px;
       background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
       border-radius: var(--radius-md);
       display: flex;
@@ -407,7 +409,6 @@
       position: relative;
       overflow: hidden;
       border: 1px solid var(--border-color);
-      margin-bottom: 24px;
     }
 
     .doctor-image-box i {
@@ -423,7 +424,9 @@
     }
 
     .doctor-header {
-      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .doctor-role-badge {
@@ -445,35 +448,37 @@
     }
 
     .doctor-quote {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-gray);
       background: var(--bg-alt);
       border-left: 3px solid var(--primary);
       padding: 14px 16px;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin-bottom: 24px;
       line-height: 1.6;
     }
 
     .history-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: auto;
+      gap: 8px;
+      background: #FAFAFA;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #F1F5F9;
     }
 
     .history-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       color: var(--text-gray);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .history-item i {
       color: var(--primary);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       margin-top: 4px;
       flex-shrink: 0;
     }
@@ -876,10 +881,10 @@
       .philosophy-grid,
       .services-grid,
       .doctors-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
       .doctor-image-box {
-        height: 300px;
+        height: 280px;
       }
     }
 
@@ -935,7 +940,7 @@
         font-size: 0.9rem;
       }
       body {
-        padding-bottom: 60px; /* 플로팅 바 하단 가림 방지 */
+        padding-bottom: 60px;
       }
     }
   </style>
@@ -1063,7 +1068,7 @@
           <div class="history-list">
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
-              <span> 원광대학교 한의과대학 졸업 </span>
+              <span>원광대학교 한의과대학 졸업</span>
             </div>
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
@@ -1101,15 +1106,15 @@
               <i class="fa-solid fa-circle-check"></i>
               <span>대한약침학회 회원</span>
             </div>
-              <div class="history-item">
+            <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
               <span>대한한방소아과학회 회원</span>
             </div>
-              <div class="history-item">
+            <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
               <span>대한한방부인과학회 회원</span>
             </div>
-              <div class="history-item">
+            <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
               <span>한방비만학회 회원</span>
             </div>
@@ -1119,7 +1124,7 @@
         <div class="doctor-card">
           <div class="doctor-image-box">
             <i class="fa-solid fa-user-doctor"></i>
-            <span style="font-weight: 600; font-size: 0.9rem;">진료원장 사진 영역</span>
+            <span style="font-weight: 600; font-size: 0.9rem;">김준연 진료원장 사진 영역</span>
           </div>
 
           <div class="doctor-header">
@@ -1134,7 +1139,7 @@
           <div class="history-list">
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
-              <span>우석대 한의과대학 졸업</span>
+              <span>우석대학교 한의과대학 졸업</span>
             </div>
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
@@ -1150,7 +1155,7 @@
             </div>
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
-              <span>현) 지축자인한의원 대표원장</span>
+              <span>현) 지축자인한의원 진료원장</span>
             </div>
             <div class="history-item">
               <i class="fa-solid fa-circle-check"></i>
@@ -1172,7 +1177,6 @@
               <i class="fa-solid fa-circle-check"></i>
               <span>소아청소년성장학회 회원</span>
             </div>
-          
           </div>
         </div>
 
