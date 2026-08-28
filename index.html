@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>지축자인한의원 - 정확하게 진단하고, 정직하게 치료하겠습니다</title>
+  
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ==========================================================================
+       CSS Variables & Global Reset
+       ========================================================================== */
+    :root {
+      /* Primary / Accent Colors */
+      --primary-color: #E06D3B;        /* 따뜻하고 고급스러운 테라코타 오렌지 */
+      --primary-hover: #C8531F;
+      --primary-light: #FDF4EE;
+      --primary-border: #F3CBB8;
+
+      /* Neutral Colors */
+      --bg-main: #FFFFFF;
+      --bg-alt: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --text-dark: #1E293B;
+      --text-gray: #475569;
+      --text-light: #64748B;
+      --border-color: #E2E8F0;
+      
+      /* Accent Navy/Slate for Trust */
+      --brand-navy: #0F172A;
+      --navy-light: #1E293B;
+
+      /* Shadow & Radius */
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 12px 30px rgba(224, 109, 59, 0.15);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --container-width: 1200px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-main);
+      line-height: 1.65;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section Common Styles */
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .bg-alt {
+      background-color: var(--bg-alt);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-subtitle {
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      background: var(--primary-light);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-top: 12px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==========================================================================
+       Header & Navigation
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-point {
+      color: var(--primary-color);
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-item a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-gray);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-item a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      background: var(--primary-color);
+      color: #FFFFFF !important;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-hover);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--brand-navy);
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       1. Hero Section
+       ========================================================================== */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      padding: 120px 0 100px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(224, 109, 59, 0.25) 0%, rgba(224, 109, 59, 0) 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(224, 109, 59, 0.18);
+      border: 1px solid rgba(224, 109, 59, 0.35);
+      border-radius: var(--radius-full);
+      color: #FFA578;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 3.1rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      color: #FFA578;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #E2E8F0;
+      margin-bottom: 36px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      color: #E2E8F0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 30px;
+      border-radius: var(--radius-full);
+      font-size: 1.05rem;
+      font-weight: 700;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(224, 109, 59, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       2. Philosophy (진료 철학)
+       ========================================================================== */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .philosophy-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .philosophy-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+
+    .philo-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-md);
+      background: var(--primary-light);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
+
+    .philosophy-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      margin-bottom: 12px;
+    }
+
+    .philosophy-card p {
+      color: var(--text-gray);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       3. Doctor Profile (의료진 소개)
+       ========================================================================== */
+    .doctor-wrapper {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 50px;
+      align-items: center;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .doctor-image-box {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(180deg, #F1F5F9 0%, #CBD5E1 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .doctor-image-box i {
+      font-size: 6rem;
+      margin-bottom: 12px;
+      color: #64748B;
+    }
+
+    .doctor-info-content h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 6px;
+    }
+
+    .doctor-info-content .doctor-role {
+      font-size: 1.05rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .doctor-quote {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-gray);
+      background: var(--bg-alt);
+      border-left: 4px solid var(--primary-color);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 28px;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.98rem;
+      color: var(--text-gray);
+    }
+
+    .history-item i {
+      color: var(--primary-color);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       4. Medical Subjects (진료 과목)
+       ========================================================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .service-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .service-tag {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      background: var(--bg-alt);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid #EEF2F6;
+    }
+
+    /* ==========================================================================
+       5. Schedule & Timetable (진료 시간표)
+       ========================================================================== */
+    .schedule-wrapper {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .night-clinic-banner {
+      background: linear-gradient(90deg, #E06D3B 0%, #C8531F 100%);
+      color: #FFFFFF;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .night-clinic-banner .banner-text {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .night-clinic-banner .banner-badge {
+      background: #FFFFFF;
+      color: var(--primary-color);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .timetable-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .timetable-table th, 
+    .timetable-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+
+    .timetable-table th {
+      background-color: var(--bg-alt);
+      color: var(--brand-navy);
+      font-weight: 700;
+      width: 30%;
+    }
+
+    .timetable-table td {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .timetable-table tr:last-child th,
+    .timetable-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-no-lunch {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .timetable-notice {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: #FFFBEB;
+      border-left: 4px solid #F59E0B;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.92rem;
+      color: #92400E;
+    }
+
+    /* ==========================================================================
+       6. Location & Map (오시는 길)
+       ========================================================================== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .location-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-group {
+      margin-bottom: 24px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .info-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-icon-wrap {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .info-detail h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      margin-bottom: 4px;
+    }
+
+    .info-detail p {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    .map-box {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 380px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .map-box i {
+      font-size: 3.5rem;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+    }
+
+    /* ==========================================================================
+       7. Non-Reimbursement (비급여 목록표)
+       ========================================================================== */
+    .nonpay-table-wrap {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nonpay-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .nonpay-table th {
+      background-color: var(--brand-navy);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 16px 20px;
+      font-size: 0.98rem;
+    }
+
+    .nonpay-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .nonpay-table tr:hover {
+      background-color: var(--primary-light);
+    }
+
+    .price-text {
+      font-weight: 800;
+      color: var(--primary-color);
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       8. Floating Quick Action Bar (플로팅 버튼)
+       ========================================================================== */
+    .floating-bar {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 9999;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-naver {
+      background: #03C75A;
+    }
+
+    .btn-naver:hover {
+      background: #02b350;
+      transform: translateY(-3px);
+    }
+
+    .btn-call {
+      background: var(--primary-color);
+    }
+
+    .btn-call:hover {
+      background: var(--primary-hover);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================================================
+       9. Footer
+       ========================================================================== */
+    .footer {
+      background-color: #0B1120;
+      color: #94A3B8;
+      padding: 60px 0 40px;
+      border-top: 1px solid #1E293B;
+      font-size: 0.92rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #1E293B;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: #CBD5E1;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 30px;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .footer-info-item span {
+      color: #64748B;
+      margin-right: 8px;
+    }
+
+    .footer-info-item strong {
+      color: #E2E8F0;
+      font-weight: 500;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ==========================================================================
+       Responsive Breakpoints (Mobile Optimization: 768px and below)
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .philosophy-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .doctor-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .doctor-image-box {
+        height: 360px;
+      }
+      .doctor-quote {
+        text-align: left;
+      }
+      .history-list {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 60px 0;
+      }
+      .section-title {
+        font-size: 1.75rem;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .hero-desc {
+        font-size: 1.05rem;
+      }
+      .hero {
+        padding: 80px 0 60px;
+      }
+      .philosophy-grid,
+      .services-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .doctor-wrapper,
+      .schedule-wrapper {
+        padding: 24px 18px;
+      }
+      .timetable-table th, 
+      .timetable-table td {
+        padding: 12px 10px;
+        font-size: 0.88rem;
+      }
+      .footer-info-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-list {
+        display: none; /* 실제 환경에서는 토글 메뉴 스크립트 연결 가능 */
+      }
+      .floating-bar {
+        bottom: 20px;
+        right: 16px;
+        left: 16px;
+        flex-direction: row;
+      }
+      .floating-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 14px 12px;
+        font-size: 0.9rem;
+      }
+      body {
+        padding-bottom: 60px; /* 플로팅 바 가림 방지 */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-seedling logo-point"></i>
+        <span>지축자인<span class="logo-point">한의원</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#philosophy">진료철학</a></li>
+          <li class="nav-item"><a href="#doctor">의료진소개</a></li>
+          <li class="nav-item"><a href="#services">진료과목</a></li>
+          <li class="nav-item"><a href="#schedule">진료시간</a></li>
+          <li class="nav-item"><a href="#location">오시는 길</a></li>
+          <li class="nav-item"><a href="#non-reimbursement">비급여안내</a></li>
+          <li class="nav-item">
+            <a href="https://m.booking.naver.com/booking/13/bizes/851838?theme=place&entry=pll&lang=ko&area=pll" target="_blank" rel="noopener noreferrer" class="nav-btn">
+              <i class="fa-solid fa-calendar-check"></i> 빠른예약
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-moon"></i> 평일 매일 저녁 8시까지 야간진료
+        </div>
+        <h1 class="hero-title">
+          정확하게 진단하고,<br />
+          <span>정직하게 치료</span>하겠습니다.
+        </h1>
+        <p class="hero-desc">
+          지축자인한의원은 가족과 친구에게 자신 있게 추천할 수 있는 평생 주치의가 되겠습니다. 
+          현대적 진단 장비와 전통 한의학의 조화로 통증의 근본 원인을 해결합니다.
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">#초음파 정밀진단</span>
+          <span class="hero-tag">#척추·관절 중점</span>
+          <span class="hero-tag">#1:1 맞춤 다이어트</span>
+          <span class="hero-tag">#체계적 추나요법</span>
+          <span class="hero-tag">#교통사고 입원/통원치료</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://m.booking.naver.com/booking/13/bizes/851838?theme=place&entry=pll&lang=ko&area=pll" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i class="fa-solid fa-calendar-check"></i> 네이버 바로 예약하기
+          </a>
+          <a href="tel:02-6952-7562" class="btn btn-outline-light">
+            <i class="fa-solid fa-phone"></i> 전화 문의 (02-6952-7562)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="section-padding bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Philosophy</span>
+        <h2 class="section-title">지축자인한의원의 3대 치료 원칙</h2>
+        <p class="section-desc">
+          환자 한 분 한 분의 아픔에 귀 기울이고, 과학적인 진단과 정직한 처방으로 건강한 일상을 되찾아 드립니다.
+        </p>
+      </div>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="philo-icon"><i class="fa-solid fa-microscope"></i></div>
+          <h3>01. 과학적 정밀 진단</h3>
+          <p>초음파 진단기, 혈액검사기 등 현대 의료장비를 선도적으로 활용하여 육안과 문진만으로 파악하기 힘든 통증과 구조적 이상을 정확하게 진단합니다.</p>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="philo-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>02. 과잉 없는 정직한 치료</h3>
+          <p>불필요한 과잉 진료를 배제하고 환자에게 꼭 필요한 침, 약침, 추나, 한약 처방만을 안내하여 믿고 치료받을 수 있는 정직한 의료를 실천합니다.</p>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="philo-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>03. 1:1 체질별 맞춤 케어</h3>
+          <p>단순 증상 완화에 그치지 않고 기초 대사량 증진, 자율신경 회복, 근막 이완 등 근본적인 체질 개선을 통해 재발을 방지합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctor" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Medical Team</span>
+        <h2 class="section-title">환자의 건강만을 생각하는 대표원장</h2>
+        <p class="section-desc">통증 없는 편안한 일상으로 돌아가실 수 있도록 진심을 다해 진료합니다.</p>
+      </div>
+
+      <div class="doctor-wrapper">
+        <div class="doctor-image-box">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span style="font-weight: 600; color: #475569;">원장 프로필 사진 영역</span>
+        </div>
+
+        <div class="doctor-info-content">
+          <h3>권도영 대표원장</h3>
+          <span class="doctor-role">지축자인한의원 대표원장 / 한의사</span>
+          
+          <div class="doctor-quote">
+            "내 가족과 소중한 친구에게 가장 먼저 소개하고 싶은 한의원이 되는 것이 저의 신념입니다. 현대 한의학적 지견과 최신 의료기기를 통해 보다 안전하고 정확하게 치유해 드리겠습니다."
+          </div>
+
+          <div class="history-list">
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>한의과대학 한의학과 졸업 및 한의사 면허 취득</span>
+            </div>
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>대한한의학회 정회원</span>
+            </div>
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>대한초음파한의학회 정회원 (초음파 진단 연수)</span>
+            </div>
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>척추신경추나의학회 정규과정 수료 및 정회원</span>
+            </div>
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>대한약침학회 회원</span>
+            </div>
+            <div class="history-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>현 지축자인한의원 대표원장</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section-padding bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Clinics</span>
+        <h2 class="section-title">지축자인한의원 주요 진료과목</h2>
+        <p class="section-desc">체계적인 현대 한의학 시스템으로 복합적인 질환을 단계별로 치료합니다.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-badge">통증 클리닉</span>
+          <h3 class="service-title">척추·관절·디스크</h3>
+          <p class="service-desc">
+            목·허리 디스크, 척추관협착증, 오십견, 퇴행성 관절염 등 척추와 관절 통증의 원인을 초음파 등으로 정밀하게 진단하고 치료합니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#추나요법</span>
+            <span class="service-tag">#고농도약침</span>
+            <span class="service-tag">#체외충격파</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge">비만·대사 클리닉</span>
+          <h3 class="service-title">1:1 맞춤 다이어트</h3>
+          <p class="service-desc">
+            단순 식욕억제가 아닌 기초대사량 증진과 체내 디톡스를 통해 체질을 개선하고 근육 손실을 최소화하는 건강한 감량 솔루션입니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#린다이어트</span>
+            <span class="service-tag">#감비환</span>
+            <span class="service-tag">#체질개선</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge">체형 교정</span>
+          <h3 class="service-title">추나요법</h3>
+          <p class="service-desc">
+            숙련된 한의사의 손으로 틀어진 뼈와 관절을 교정하고 굳어진 근막을 이완시켜 신경 압박과 만성 구조적 불균형을 해결합니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#건강보험적용</span>
+            <span class="service-tag">#체형교정</span>
+            <span class="service-tag">#골반교정</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge">프리미엄 보약</span>
+          <h3 class="service-title">체질 맞춤 한약·보약</h3>
+          <p class="service-desc">
+            GAP 인증 청정 한약재만을 엄선하여 조제합니다. 원기 회복을 위한 녹용보약, 피로회복과 뇌기능 향상을 위한 공진단·경옥고를 맞춤 처방합니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#원방공진단</span>
+            <span class="service-tag">#녹용경옥고</span>
+            <span class="service-tag">#면역력보약</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge">소아·청소년</span>
+          <h3 class="service-title">성장 & 면역 클리닉</h3>
+          <p class="service-desc">
+            아이의 골연령 및 성장판 상태, 영양 흡수 상태를 정밀 체크하여 성장 잠재력을 깨우고 잦은 감기·비염 등 면역 저하를 함께 개선합니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#성장한약</span>
+            <span class="service-tag">#소아비만</span>
+            <span class="service-tag">#체력보강</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge">보험 클리닉</span>
+          <h3 class="service-title">교통사고 후유증 치료</h3>
+          <p class="service-desc">
+            사고 직후 나타나는 어혈성 두통, 편타성 손상(경추/요추 염좌)을 자동차보험 적용을 통해 본인부담금 없이 종합적으로 치료합니다.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">#자동차보험적용</span>
+            <span class="service-tag">#어혈제거한약</span>
+            <span class="service-tag">#통증복합치료</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Hours of Service</span>
+        <h2 class="section-title">진료 시간 안내</h2>
+        <p class="section-desc">바쁜 직장인과 지역 주민들을 위해 평일 매일 야간진료 및 주말·공휴일 진료를 시행합니다.</p>
+      </div>
+
+      <div class="schedule-wrapper">
+        <div class="night-clinic-banner">
+          <div class="banner-text">
+            <i class="fa-solid fa-clock"></i>
+            <span>평일 매일 밤 8시까지 야간진료 시행</span>
+          </div>
+          <span class="banner-badge">퇴근 후 여유로운 진료</span>
+        </div>
+
+        <table class="timetable-table">
+          <tbody>
+            <tr>
+              <th><i class="fa-solid fa-calendar-day" style="color:var(--primary-color); margin-right:8px;"></i> 평 일 (월 ~ 금)</th>
+              <td><strong>오전 09:30 ~ 오후 20:00</strong> <span style="color:var(--text-light); margin-left:8px;">(점심시간 12:30 ~ 14:00)</span></td>
+            </tr>
+            <tr>
+              <th><i class="fa-solid fa-sun" style="color:var(--primary-color); margin-right:8px;"></i> 토요일 · 일요일</th>
+              <td><strong>오전 09:30 ~ 오후 14:00</strong> <span class="badge-no-lunch">점심시간 없음 (연속진료)</span></td>
+            </tr>
+            <tr>
+              <th><i class="fa-solid fa-flag" style="color:var(--primary-color); margin-right:8px;"></i> 공휴일</th>
+              <td><strong>오전 09:30 ~ 오후 15:00</strong> <span class="badge-no-lunch">점심시간 없음 (연속진료)</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="timetable-notice">
+          <i class="fa-solid fa-circle-exclamation"></i> <strong>안내:</strong> 원활한 진료 및 대기 시간 최소화를 위해 진료 마감 30분~1시간 전까지 내원해 주시기 바랍니다. 네이버 예약을 이용하시면 더욱 편리합니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="section-padding bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Location & Contact</span>
+        <h2 class="section-title">오시는 길 & 주차 안내</h2>
+        <p class="section-desc">지축역 인근, 푸르지오 아파트 맞은편 청우스타시티 3층에 위치하고 있습니다.</p>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-card">
+          <div class="info-group">
+            <div class="info-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-detail">
+              <h4>상세 주소</h4>
+              <p>경기도 고양시 덕양구 지축로 66, 청우스타시티 3층 (지축자인한의원)<br />
+              <span style="color: var(--primary-color); font-weight:600;">* 푸르지오 아파트 맞은편 / 바로요양병원 건물 3층</span></p>
+            </div>
+          </div>
+
+          <div class="info-group">
+            <div class="info-icon-wrap"><i class="fa-solid fa-square-parking"></i></div>
+            <div class="info-detail">
+              <h4>주차 안내</h4>
+              <p>건물 지하 4층까지 완비된 넓은 지하주차장 이용 가능<br />
+              <span style="font-weight: 700; color: var(--brand-navy);">내원 환자분들께 최대 2시간 무료 주차를 지원합니다.</span></p>
+            </div>
+          </div>
+
+          <div class="info-group">
+            <div class="info-icon-wrap"><i class="fa-solid fa-phone"></i></div>
+            <div class="info-detail">
+              <h4>대표 전화</h4>
+              <p><strong>02-6952-7562</strong> (궁금하신 점은 편하게 문의하세요)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-box">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <h4 style="font-size: 1.3rem; margin-bottom: 8px; color: var(--brand-navy);">네이버 지도 바로가기</h4>
+          <p style="color: var(--text-gray); margin-bottom: 24px;">길찾기 및 상세 위치 정보를 네이버 지도로 확인하세요.</p>
+          <a href="https://naver.me/GipBCLXI" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> 네이버 지도로 길찾기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="non-reimbursement" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Transparency</span>
+        <h2 class="section-title">주요 비급여 항목 안내</h2>
+        <p class="section-desc">의료법 제45조에 의거하여 비급여 진료비용을 투명하게 공개하고 있습니다.</p>
+      </div>
+
+      <div class="nonpay-table-wrap">
+        <table class="nonpay-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>항목명</th>
+              <th>규격 / 단위</th>
+              <th>비용 (VAT 포함)</th>
+              <th>비고 및 특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>맞춤한약</strong></td>
+              <td>체질 맞춤 한약</td>
+              <td>30일분 (60포)</td>
+              <td><span class="price-text">350,000원</span></td>
+              <td>개인별 맥진/체질 진단 후 맞춤 탕전</td>
+            </tr>
+            <tr>
+              <td><strong>명품보약</strong></td>
+              <td>원기 회복 녹용한약</td>
+              <td>한 달분 (60포)</td>
+              <td><span class="price-text">650,000원</span></td>
+              <td>러시아산 상초/분골 등 최고급 녹용 함유</td>
+            </tr>
+            <tr>
+              <td><strong>다이어트</strong></td>
+              <td>린다이어트 프로그램</td>
+              <td>12주 집중 프로그램</td>
+              <td><span class="price-text">540,000원</span></td>
+              <td>대사 촉진 + 체지방 감량 + 요요 방지 관리</td>
+            </tr>
+            <tr>
+              <td><strong>전통처방</strong></td>
+              <td>원방 공진단</td>
+              <td>10환</td>
+              <td><span class="price-text">680,000원</span></td>
+              <td>진품 사향/녹용 등 식약처 인증 정품 한약재</td>
+            </tr>
+            <tr>
+              <td><strong>전통처방</strong></td>
+              <td>녹용 경옥고</td>
+              <td>30포 (스틱형)</td>
+              <td><span class="price-text">195,000원</span></td>
+              <td>녹용 배합 고농축 전통 숙성 보약</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 14px; text-align: right;">
+        * 상기 비용은 환자의 상태, 약재 구성 및 치료 기간에 따라 달라질 수 있습니다.
+      </p>
+    </div>
+  </section>
+
+  <div class="floating-bar">
+    <a href="https://m.booking.naver.com/booking/13/bizes/851838?theme=place&entry=pll&lang=ko&area=pll" target="_blank" rel="noopener noreferrer" class="floating-btn btn-naver">
+      <i class="fa-solid fa-calendar-check"></i> 네이버 예약하기
+    </a>
+    <a href="tel:02-6952-7562" class="floating-btn btn-call">
+      <i class="fa-solid fa-phone"></i> 02-6952-7562
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          지축자인<span style="color:var(--primary-color);">한의원</span>
+        </div>
+        <div class="footer-links">
+          <a href="#philosophy">진료철학</a>
+          <a href="#doctor">의료진소개</a>
+          <a href="#schedule">진료시간</a>
+          <a href="#location">오시는 길</a>
+          <a href="#non-reimbursement" style="color: #FFA578; font-weight:700;">비급여목록표</a>
+        </div>
+      </div>
+
+      <div class="footer-info-grid">
+        <div class="footer-info-item">
+          <span>상호명:</span><strong>지축자인한의원</strong>
+        </div>
+        <div class="footer-info-item">
+          <span>대표자:</span><strong>권도영</strong>
+        </div>
+        <div class="footer-info-item">
+          <span>사업자등록번호:</span><strong>887-90-01692</strong>
+        </div>
+        <div class="footer-info-item">
+          <span>대표전화:</span><strong>02-6952-7562</strong>
+        </div>
+        <div class="footer-info-item">
+          <span>소재지:</span><strong>경기도 고양시 덕양구 지축로 66, 청우스타시티 3층</strong>
+        </div>
+        <div class="footer-info-item">
+          <span>이메일:</span><strong>jain_hani@naver.com</strong>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 지축자인한의원. All Rights Reserved.</p>
+        <p>정확하게 진단하고, 정직하게 치료하겠습니다.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
